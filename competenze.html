@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lisa Cappellari - Competenze</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lisa Cappellari — Competenze</title>
+  <meta name="description" content="Competenze tecniche e trasversali di Lisa Cappellari." />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="page-contatti">
-  <header class="header">
-    <h1>Competenze</h1>
+<body>
+  <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
+  <header class="header header--small">
+    <div class="container header__inner">
+      <div class="header__text">
+        <h1 class="header__name">Competenze</h1>
+        <p class="job-title">Tecniche &amp; trasversali</p>
+      </div>
+    </div>
   </header>
 
   <nav class="navbar" aria-label="Navigazione principale">
-    <ul>
-      <li><a href="index.html">Profilo</a></li>
-      <li><a href="esperienza.html">Esperienza</a></li>
-      <li><a href="competenze.html" aria-current="page">Competenze</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
-    </ul>
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html">Profilo</a></li>
+        <li><a href="esperienza.html">Esperienza</a></li>
+        <li><a href="competenze.html" aria-current="page">Competenze</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section id="competenze" class="section">
-      <h2>Competenze</h2>
-      <ul class="skills">
-        <li>HTML / CSS</li>
-        <li>JavaScript</li>
-        <li>Problem solving</li>
-        <li>Teamwork</li>
-      </ul>
-    </section>
+  <main id="contenuto" class="main">
+    <div class="container">
+      <section class="section" aria-labelledby="titolo-competenze">
+        <h2 id="titolo-competenze">Competenze</h2>
+
+        <!-- Lista competenze -->
+        <ul class="skills" aria-label="Elenco competenze">
+          <li>HTML / CSS</li>
+          <li>JavaScript</li>
+          <li>Problem solving</li>
+          <li>Teamwork</li>
+          <li>Windows / Linux</li>
+          <li>Help Desk</li>
+        </ul>
+
+        <!-- Facoltativo: livelli (progress bar) -->
+        <h3 class="subtitle">Livelli (facoltativo)</h3>
+        <div class="meter-list">
+          <div class="meter">
+            <div class="meter__label">Supporto tecnico</div>
+            <div class="meter__bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+              <span style="width: 80%"></span>
+            </div>
+          </div>
+
+          <div class="meter">
+            <div class="meter__label">Reti</div>
+            <div class="meter__bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+              <span style="width: 60%"></span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
-    <p>© 2026 Lisa Cappellari – Tutti i diritti riservati</p>
+    <div class="container">
+      <p>© 2026 Lisa Cappellari – Tutti i diritti riservati</p>
+    </div>
   </footer>
 </body>
 </html>

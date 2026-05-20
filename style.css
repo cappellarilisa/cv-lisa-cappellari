@@ -172,7 +172,29 @@ a {
   background: rgba(255,255,255,0.26);
   font-weight: 600;
 }
+/* ===== FIX NAVBAR (migliora resa e spaziature) ===== */
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;            /* spazio tra voci */
+  flex-wrap: wrap;        /* su mobile va a capo */
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+}
 
+.navbar a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar a[aria-current="page"] {
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+}
 /* =========================
    6) SEZIONI / TIPOGRAFIA
    ========================= */

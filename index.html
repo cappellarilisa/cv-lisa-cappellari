@@ -1,45 +1,71 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lisa Cappellari - Curriculum</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lisa Cappellari — Curriculum</title>
+  <meta name="description" content="Curriculum online di Lisa Cappellari: profilo, esperienza, competenze e contatti." />
+
+  <!-- CSS corretto -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="page-contatti">
+<body>
+  <!-- Skip link corretto -->
+  <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+
   <header class="header">
-    <h1>Lisa Cappellari</h1>
+    <div class="container header__inner">
+      <div class="header__text">
+        <h1 class="header__name">Lisa Cappellari</h1>
+        <p class="job-title">Junior IT Specialist</p>
+      </div>
 
-    <img src="img/immagine_CV.jpg" alt="Foto profilo" class="profile-photo">
-
-    <p class="job-title">Junior IT Specialist</p>
+      <img
+        src="img/immagine_CV.jpg"
+        alt="Foto profilo"
+        class="profile-photo"
+      />
+    </div>
   </header>
 
   <nav class="navbar" aria-label="Navigazione principale">
-    <ul>
-      <li><a href="index.html" aria-current="page">Profilo</a></li>
-      <li><a href="esperienza.html">Esperienza</a></li>
-      <li><a href="competenze.html">Competenze</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
-    </ul>
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html" aria-current="page">Profilo</a></li>
+        <li><a href="esperienza.html">Esperienza</a></li>
+        <li><a href="competenze.html">Competenze</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main>
-    <section id="profilo" class="section">
-      <h2>Profilo</h2>
-      <p>
-        Sono una professionista IT junior, con una formazione tecnica in ambito informatico e un forte interesse per i sistemi, il supporto tecnico e lo sviluppo. Attualmente mi occupo di attività di sistemistica e help desk, maturando esperienza pratica su sistemi operativi Windows e Linux, reti, strumenti di collaborazione digitale.<br>
-        Accanto al percorso tecnologico, porto avanti da anni attività educative e di mentoring, anche in contesti di volontariato, che mi hanno permesso di sviluppare solide competenze trasversali come comunicazione, leadership, capacità di adattamento ed empatia, fondamentali anche nel lavoro in ambito IT.<br>
-        Coltivo numerosi interessi creativi e culturali, tra cui la fotografia, che pratico sia in analogico con una Olympus OM‑1 del 1969 sia in digitale con una Panasonic Lumix GX80. Questo doppio approccio mi consente di unire cura artigianale, attenzione al dettaglio e sperimentazione tecnologica. Mi dedico inoltre alla scrittura poetica, alla lettura, ai laboratori d’arte e disegno, al cinema e al mondo anime e manga, passioni che alimentano la mia sensibilità, il pensiero critico e la creatività, anche nella risoluzione di problemi tecnici.<br>
-        Partecipo a un coro, esperienza che ha rafforzato il mio senso del gruppo e dell’ascolto reciproco. Dal punto di vista sportivo, ho praticato calcio per cinque anni e attualmente pratico Muay Thai, disciplina che mi ha insegnato concentrazione, disciplina e resilienza.<br>
-        Sono una persona curiosa, determinata e orientata alla crescita continua. Il mio obiettivo è consolidare le mie competenze informatiche, continuare a imparare nuove tecnologie e contribuire a progetti che sappiano unire competenza tecnica, creatività e attenzione alle persone.
-      </p>
-    </section>
+  <main id="contenuto" class="main">
+    <div class="container">
+      <section class="section" aria-labelledby="titolo-profilo">
+        <h2 id="titolo-profilo">Profilo</h2>
+
+        <!-- Qui puoi incollare il tuo testo profilo completo -->
+        <p>
+          Sono una professionista IT junior, con una formazione tecnica in ambito informatico e un forte interesse
+          per i sistemi, il supporto tecnico e lo sviluppo. Attualmente mi occupo di attività di sistemistica e help desk,
+          maturando esperienza pratica su sistemi operativi Windows e Linux, reti e strumenti di collaborazione digitale.
+        </p>
+
+        <p>
+          Accanto al percorso tecnologico, porto avanti attività educative e di mentoring che mi hanno permesso di sviluppare
+          competenze trasversali come comunicazione, leadership e adattamento. Coltivo interessi creativi tra cui la fotografia
+          (analogica con Olympus OM‑1 1969 e digitale con Panasonic Lumix GX80), scrittura, lettura, laboratori d’arte/disegno,
+          cinema e anime/manga.
+        </p>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
-    <p>© 2026 Lisa Cappellari – Tutti i diritti riservati</p>
+    <div class="container">
+      <p>© 2026 Lisa Cappellari – Tutti i diritti riservati</p>
+    </div>
   </footer>
 </body>
 </html>

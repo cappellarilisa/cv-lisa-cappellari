@@ -291,4 +291,44 @@ main {
     width: 135px;
     height: 135px;
   }
+
+  /* =========================================================
+   FIX: Rimuovi i "riquadri" (card/box) dalle pagine standard
+   (Index / Esperienza / Competenze)
+   ========================================================= */
+
+.page-standard .item {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.page-standard .skills li {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0.25rem 0;
+  text-align: left;
+}
+
+/* opzionale: se vuoi la lista competenze come elenco normale */
+.page-standard .skills {
+  display: block;        /* disattiva la griglia */
+  padding-left: 1.2rem;  /* rientro elenco */
+  list-style: disc;      /* pallini */
+}
+
+.page-standard .skills li {
+  list-style: disc;
+}
+
+/* Se mai usi .card anche nelle pagine standard, la "spengo" */
+.page-standard .card {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
 }

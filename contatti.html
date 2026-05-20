@@ -4,20 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lisa Cappellari — Contatti</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
+<!-- classe per attivare lo stile dark SOLO in questa pagina -->
 <body class="page-contatti">
-  <!-- ================= HEADER ================= -->
   <header class="header">
     <h1>Contatti</h1>
     <p class="job-title">Scrivimi o seguimi</p>
   </header>
 
-  <!-- ================= NAVIGAZIONE ================= -->
-  <!-- IMPORTANTE: deve esserci "<nav" e deve chiudere con "</nav>" -->
+  <!-- NAV: deve essere un tag valido, altrimenti ti stampa il testo a schermo -->
   <nav class="navbar" aria-label="Navigazione principale">
     <ul>
       <li><a href="index.html">Profilo</a></li>
@@ -27,61 +24,56 @@
     </ul>
   </nav>
 
-  <!-- ================= CONTENUTO ================= -->
   <main>
     <section id="contatti" class="section">
       <h2>Contatti</h2>
 
-      <div class="card">
-        <p>
-          <strong>Email:</strong>
+      <!-- BLOCCO 1: SOCIAL / CONTATTI (SEPARATO) -->
+      <div class="contact-card">
+        <p><strong>Email:</strong>
           <a href="mailto:lisacappellari0@gmail.com">lisacappellari0@gmail.com</a>
         </p>
 
-        <!-- Suggerimento: qui meglio mettere il link del tuo profilo LinkedIn reale -->
-        <p>
-          <strong>LinkedIn:</strong>
-          <a href="www.linkedin.com/in/lisa-cappellari-725363319" target="_blank" rel="noopener">Lisa Cappellari</a>
+        <!-- Consiglio: metti qui il link reale del tuo profilo LinkedIn -->
+        <p><strong>LinkedIn:</strong>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">Lisa Cappellari</a>
         </p>
 
-        <p>
-          <strong>Instagram:</strong>
-          <a href="https://www.instagram.com/cappellari_lisa?igsh=M3BuZnFtcjJkc2dq"
-             target="_blank" rel="noopener">cappellari_lisa</a>
+        <p><strong>Instagram:</strong>
+          <a href="https://www.instagram.com/cappellari_lisa?igsh=M3BuZnFtcjJkc2dq" target="_blank" rel="noopener">
+            cappellari_lisa
+          </a>
         </p>
 
-        <p>
-          <strong>VSCO:</strong>
+        <p><strong>VSCO:</strong>
           <a href="https://vsco.co/m1k4s4sh1/gallery" target="_blank" rel="noopener">m1k4s4sh1</a>
         </p>
-        
-<!-- Facoltativo: mini form (solo UI, senza backend) -->
-        <h3 class="subtitle">Messaggio (facoltativo)</h3>
-        <form class="form" action="#" method="post">
-          <label>
-            Nome
-            <input type="text" name="nome" autocomplete="name" placeholder="Il tuo nome" />
-          </label>
+      </div>
 
-          <label>
-            Email
-            <input type="email" name="email" autocomplete="email" placeholder="nome@email.com" />
-          </label>
+      <!-- BLOCCO 2: FORM (SEPARATO) -->
+      <div class="form-block">
+        <h3 class="form-title">Messaggio (facoltativo)</h3>
 
-          <label>
-            Messaggio
-            <textarea name="messaggio" rows="5" placeholder="Scrivi qui..."></textarea>
-          </label>
+        <form class="contact-form" action="#" method="post">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" placeholder="Il tuo nome" autocomplete="name" />
 
-          <button class="button" type="submit">Invia</button>
-          <p class="note">Nota: questo form non invia davvero senza un backend (serve PHP/Forms/Gmail API ecc.).</p>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="nome@email.com" autocomplete="email" />
+
+          <label for="messaggio">Messaggio</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui..."></textarea>
+
+          <button type="submit">Invia</button>
+
+          <p class="note">
+            Nota: questo form non invia davvero senza un backend (serve PHP/Forms/Gmail API ecc.).
+          </p>
         </form>
-
       </div>
     </section>
   </main>
 
-  <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <p>© 2026 Lisa Cappellari – Tutti i diritti riservati</p>
   </footer>

@@ -1,30 +1,19 @@
-/* =========================================================
-   STILE CV - Lisa Cappellari (Template)
-   - Mantiene lo stile originale (colori + layout)
-   - Corregge reset e variabili mancanti
-   - Migliora navbar su mobile
-   - Aggiunge stili per pagina Contatti (card, social, form)
-   ========================================================= */
-
 /* ================= VARIABILI GLOBALI ================= */
 :root {
-  /* Colori originali */
   --colore-primario: #2c3e50;
   --colore-secondario: #3498db;
   --colore-sfondo: #ecf0f1;
   --colore-testo: #2d3436;
 
-  /* Variabili mancanti (erano usate ma non definite) */
+  /* Mancavano ma venivano usate nel tuo CSS */
   --font-principale: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --larghezza-max: 980px;
 
-  /* Extra leggeri (non cambiano stile, aiutano uniformità) */
-  --raggio: 10px;
-  --ombra: 0 10px 25px rgba(0, 0, 0, 0.08);
-  --bordo: rgba(0, 0, 0, 0.12);
+  /* Extra (coerenti) */
+  --raggio: 12px;
 }
 
-/* ================= RESET BASE (corretto) ================= */
+/* ================= RESET BASE (FIX) ================= */
 *,
 *::before,
 *::after {
@@ -47,8 +36,10 @@ img {
   display: block;
 }
 
-a {
-  color: inherit;
+main {
+  max-width: var(--larghezza-max);
+  margin: auto;
+  padding: 2rem 1rem;
 }
 
 /* ================= HEADER ================= */
@@ -70,48 +61,37 @@ a {
   background-color: var(--colore-secondario);
 }
 
-/* migliorata: spaziatura + wrap su mobile */
 .navbar ul {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;          /* fondamentale per mobile */
   list-style: none;
+  flex-wrap: wrap;     /* migliora su mobile */
   gap: 0.4rem;
   padding: 0.4rem;
 }
 
-/* link coerenti */
 .navbar a {
   color: white;
   text-decoration: none;
-  padding: 0.85rem 1rem;
+  padding: 1rem;
   display: block;
-  border-radius: var(--raggio);
-  transition: background-color 0.2s ease;
+  border-radius: 10px;
 }
 
 .navbar a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* pagina attiva (se in HTML aggiungi aria-current="page") */
+/* Se vuoi evidenziare la pagina attiva, aggiungi aria-current="page" all’<a> */
 .navbar a[aria-current="page"] {
   background-color: rgba(255, 255, 255, 0.28);
   font-weight: 600;
 }
 
-/* ================= CONTENUTO ================= */
-main {
-  max-width: var(--larghezza-max);
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-/* ================= FOTO PROFILO (commenti corretti) ================= */
+/* ================= FOTO PROFILO (FIX COMMENTI) ================= */
 .profile-photo {
   width: 150px;        /* dimensione immagine */
-  height: 150px;       /* rende il cerchio perfetto */
+  height: 150px;       /* cerchio perfetto */
   object-fit: cover;   /* evita deformazioni */
   border-radius: 50%;  /* immagine circolare */
   margin: 1rem auto;   /* spazio sopra e sotto */
@@ -129,17 +109,11 @@ main {
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--colore-secondario);
   display: inline-block;
-  padding-bottom: 0.2rem;
 }
 
 /* ================= ESPERIENZA ================= */
 .item {
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: white;
-  border-radius: var(--raggio);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .item h3 {
@@ -156,105 +130,13 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.8rem;
-  margin-top: 0.5rem;
-  padding-left: 0;
 }
 
 .skills li {
   background-color: white;
-  padding: 0.75rem;
+  padding: 0.6rem;
   text-align: center;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-}
-
-/* =========================================================
-   CONTATTI — STILI SPECIFICI (RISOLVONO LA PAGINA CONTATTI)
-   ========================================================= */
-
-/* card contatti (social/email) */
-.card {
-  background: white;
-  border-radius: var(--raggio);
-  padding: 1.2rem;
-  box-shadow: var(--ombra);
-  border: 1px solid rgba(0,0,0,0.06);
-  margin-top: 1rem;
-}
-
-.card p {
-  margin-bottom: 0.7rem;
-}
-
-.card p:last-child {
-  margin-bottom: 0;
-}
-
-/* link social: visibili, cliccabili, “da CV” */
-.card a {
-  color: var(--colore-secondario);
-  font-weight: 600;
-  text-decoration: none;
-  word-break: break-word; /* evita che URL lunghi sfondino */
-}
-
-.card a:hover {
-  text-decoration: underline;
-}
-
-/* form contatti (se lo usi) */
-.form {
-  margin-top: 1.5rem;
-  display: grid;
-  gap: 0.9rem;
-  max-width: 600px;
-}
-
-.form label {
-  display: grid;
-  gap: 0.35rem;
-  font-weight: 600;
-}
-
-.form input,
-.form textarea {
-  font: inherit;
-  padding: 0.85rem 1rem;
-  border-radius: var(--raggio);
-  border: 1px solid var(--bordo);
-  background: white;
-  outline: none;
-}
-
-.form input:focus,
-.form textarea:focus {
-  border-color: var(--colore-secondario);
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
-}
-
-/* bottone invio coerente con il tema */
-.button,
-.form button {
-  background: var(--colore-secondario);
-  color: white;
-  border: none;
-  border-radius: var(--raggio);
-  padding: 0.9rem 1rem;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  transition: filter 0.2s ease;
-}
-
-.button:hover,
-.form button:hover {
-  filter: brightness(0.95);
-}
-
-.note {
-  color: #6b7280;
-  font-size: 0.95rem;
+  border-radius: 5px;
 }
 
 /* ================= FOOTER ================= */
@@ -266,18 +148,100 @@ main {
   font-size: 0.9rem;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================================================
+   CONTATTI - STILE “DARK” COME NELLO SCREENSHOT
+   Attivo SOLO se in contatti.html metti: <body class="page-contatti">
+   ========================================================= */
+
+.page-contatti {
+  background: #2f4353; /* blu/grigio scuro come nello screenshot */
+  color: #ffffff;
+}
+
+/* Manteniamo header e navbar coerenti (restano già ok), ma main diventa dark */
+.page-contatti main {
+  padding-top: 2.2rem;
+}
+
+/* Titoli in contatti: underline azzurra */
+.page-contatti .section h2 {
+  color: #ffffff;
+  border-bottom: 3px solid var(--colore-secondario);
+}
+
+/* Card grande bianca (quella del riquadro nello screenshot) */
+.page-contatti .card {
+  background: #ffffff;
+  color: #111827;
+  border-radius: var(--raggio);
+  padding: 1.6rem;
+  margin: 1.2rem 0 2rem;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.20);
+  min-height: 240px; /* simile al blocco grande che hai nello screenshot */
+}
+
+/* Link social dentro la card */
+.page-contatti .card a {
+  color: var(--colore-secondario);
+  font-weight: 700;
+  text-decoration: none;
+  word-break: break-word;
+}
+.page-contatti .card a:hover {
+  text-decoration: underline;
+}
+
+/* Form stile “pulito” */
+.page-contatti form {
+  max-width: 720px;
+}
+
+.page-contatti label {
+  display: block;
+  margin: 1rem 0 0.4rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.page-contatti input,
+.page-contatti textarea {
+  width: 100%;
+  padding: 1rem 1rem;
+  border-radius: var(--raggio);
+  border: none;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+}
+
+.page-contatti textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+/* Bottone “Invia” azzurro grande come nello screenshot */
+.page-contatti button,
+.page-contatti .button {
+  width: 100%;
+  margin-top: 1.2rem;
+  background: var(--colore-secondario);
+  color: white;
+  border: none;
+  border-radius: var(--raggio);
+  padding: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.page-contatti button:hover,
+.page-contatti .button:hover {
+  filter: brightness(0.96);
+}
+
+/* Responsive */
 @media (max-width: 560px) {
   .navbar a {
-    padding: 0.7rem 0.85rem;
-  }
-
-  main {
-    padding: 1.5rem 1rem;
-  }
-
-  .profile-photo {
-    width: 135px;
-    height: 135px;
+    padding: 0.75rem 0.9rem;
   }
 }

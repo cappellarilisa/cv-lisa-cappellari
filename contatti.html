@@ -54,6 +54,29 @@
           <strong>VSCO:</strong>
           <a href="https://vsco.co/m1k4s4sh1/gallery" target="_blank" rel="noopener">m1k4s4sh1</a>
         </p>
+        
+<!-- Facoltativo: mini form (solo UI, senza backend) -->
+        <h3 class="subtitle">Messaggio (facoltativo)</h3>
+        <form class="form" action="#" method="post">
+          <label>
+            Nome
+            <input type="text" name="nome" autocomplete="name" placeholder="Il tuo nome" />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" placeholder="nome@email.com" />
+          </label>
+
+          <label>
+            Messaggio
+            <textarea name="messaggio" rows="5" placeholder="Scrivi qui..."></textarea>
+          </label>
+
+          <button class="button" type="submit">Invia</button>
+          <p class="note">Nota: questo form non invia davvero senza un backend (serve PHP/Forms/Gmail API ecc.).</p>
+        </form>
+
       </div>
     </section>
   </main>

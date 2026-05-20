@@ -1,28 +1,23 @@
-/* =========================================================
-   CV SITE - style.css
-   - Stile originale (chiaro) per tutte le pagine
-   - Tema DARK solo per la pagina Contatti (body.page-contatti)
-   - Navbar e bottoni coerenti e funzionanti
-   ========================================================= */
-
 /* ================= VARIABILI GLOBALI ================= */
 :root {
-  --colore-primario: #2c3e50;     /* header + footer */
-  --colore-secondario: #3498db;   /* navbar + bottoni */
-  --colore-sfondo: #ecf0f1;       /* sfondo pagine */
-  --colore-testo: #2d3436;        /* testo */
+  --colore-primario: #2c3e50;
+  --colore-secondario: #3498db;
+  --colore-sfondo: #ecf0f1;
+  --colore-testo: #2d3436;
 
+  /* FIX: nel tuo CSS erano usate ma non esistevano */
   --font-principale: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --larghezza-max: 980px;
 
+  /* Supporto layout */
   --raggio: 12px;
-  --shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
+  --shadow-strong: 0 14px 30px rgba(0, 0, 0, 0.20);
   --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
-
-  --focus-ring: 0 0 0 3px rgba(52, 152, 219, 0.30);
+  --focus-ring: 0 0 0 3px rgba(52, 152, 219, 0.28);
 }
 
-/* ================= RESET BASE (corretto) ================= */
+/* ================= RESET BASE (FIX) ================= */
+/* Nel tuo CSS originale il reset era "- { ... }" e non è valido */
 *,
 *::before,
 *::after {
@@ -31,7 +26,7 @@
   box-sizing: border-box;
 }
 
-/* ================= BASE ================= */
+/* ================= STILE GENERALE ================= */
 body {
   font-family: var(--font-principale);
   background-color: var(--colore-sfondo);
@@ -45,22 +40,11 @@ img {
   display: block;
 }
 
-a {
-  color: inherit;
-}
-
 /* focus accessibile */
 :focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
   border-radius: 10px;
-}
-
-/* ================= LAYOUT CONTENUTO ================= */
-main {
-  max-width: var(--larghezza-max);
-  margin: auto;
-  padding: 2rem 1rem;
 }
 
 /* ================= HEADER ================= */
@@ -77,16 +61,6 @@ main {
   margin-top: 0.25rem;
 }
 
-/* ================= FOTO PROFILO ================= */
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin: 1rem auto;
-  border: 3px solid white;
-}
-
 /* ================= NAVBAR ================= */
 .navbar {
   background-color: var(--colore-secondario);
@@ -96,30 +70,48 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;   /* su mobile va a capo */
-  gap: 0.4rem;
   list-style: none;
+
+  /* miglioramenti: su mobile non “si rompe” */
+  flex-wrap: wrap;
+  gap: 0.4rem;
   padding: 0.4rem;
 }
 
 .navbar a {
-  display: block;
   color: white;
   text-decoration: none;
-  padding: 0.85rem 1rem;
+  padding: 1rem;
+  display: block;
   border-radius: 10px;
-  transition: background-color 0.2s ease, filter 0.2s ease;
 }
 
-/* hover */
 .navbar a:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* pagina attiva */
+/* evidenzia pagina attiva */
 .navbar a[aria-current="page"] {
   background-color: rgba(255, 255, 255, 0.28);
-  font-weight: 700;
+  font-weight: 600;
+}
+
+/* ================= CONTENUTO ================= */
+main {
+  max-width: var(--larghezza-max);
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* ================= FOTO PROFILO (FIX COMMENTI) ================= */
+.profile-photo {
+  width: 150px;        /* dimensione immagine */
+  height: 150px;       /* rende il cerchio perfetto */
+  object-fit: cover;   /* evita deformazioni */
+  border-radius: 50%;  /* immagine circolare */
+  margin: 1rem auto;   /* spazio sopra e sotto */
+  display: block;
+  border: 3px solid white;
 }
 
 /* ================= SEZIONI ================= */
@@ -135,21 +127,13 @@ main {
   padding-bottom: 0.2rem;
 }
 
-/* ================= CARD GENERICHE ================= */
-.card {
-  background: white;
-  border-radius: var(--raggio);
-  padding: 1.2rem;
-  box-shadow: var(--shadow-soft);
-}
-
 /* ================= ESPERIENZA ================= */
 .item {
-  background: white;
-  border-radius: var(--raggio);
-  padding: 1rem;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.item h3 {
+  margin-bottom: 0.3rem;
 }
 
 .date {
@@ -160,43 +144,16 @@ main {
 /* ================= COMPETENZE ================= */
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.8rem;
-  list-style: none;
-  margin-top: 0.5rem;
+  padding-left: 0;
 }
 
 .skills li {
-  background: white;
-  padding: 0.75rem;
+  background-color: white;
+  padding: 0.6rem;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: var(--shadow-soft);
-}
-
-/* ================= BOTTONI (FUNZIONANO OVUNQUE) ================= */
-.btn,
-button {
-  background: var(--colore-secondario);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 0.95rem 1rem;
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
-  transition: filter 0.2s ease;
-}
-
-.btn:hover,
-button:hover {
-  filter: brightness(0.96);
-}
-
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
+  border-radius: 5px;
 }
 
 /* ================= FOOTER ================= */
@@ -210,32 +167,28 @@ button:hover {
 
 /* =========================================================
    CONTATTI - TEMA DARK + BLOCCHI SEPARATI
-   Attivo SOLO se body ha class="page-contatti"
+   Attivo solo se <body class="page-contatti">
    ========================================================= */
-
 .page-contatti {
   background: #2f4353;
   color: #ffffff;
 }
 
-.page-contatti main {
-  padding-top: 2.2rem;
-}
-
-/* titolo sezione su dark */
+/* titolo sezione in dark */
 .page-contatti .section h2 {
   color: #ffffff;
   border-bottom: 3px solid var(--colore-secondario);
+  padding-bottom: 0.25rem;
 }
 
-/* BLOCCO 1: card contatti/social separata */
+/* Card social separata */
 .page-contatti .contact-card {
   background: #ffffff;
   color: #111827;
   border-radius: var(--raggio);
   padding: 1.4rem 1.6rem;
   margin: 1.2rem 0 1.6rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-strong);
 }
 
 .page-contatti .contact-card p {
@@ -258,7 +211,7 @@ button:hover {
   text-decoration: underline;
 }
 
-/* BLOCCO 2: form separato */
+/* Form separato */
 .page-contatti .form-block {
   margin-top: 1rem;
 }
@@ -270,7 +223,6 @@ button:hover {
   color: #ffffff;
 }
 
-/* stile form */
 .page-contatti .contact-form {
   max-width: 720px;
 }
@@ -298,3 +250,45 @@ button:hover {
   resize: vertical;
 }
 
+.page-contatti .contact-form input:focus,
+.page-contatti .contact-form textarea:focus {
+  box-shadow: var(--focus-ring);
+}
+
+.page-contatti .contact-form button {
+  width: 100%;
+  margin-top: 1.2rem;
+  background: var(--colore-secondario);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--raggio);
+  padding: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.page-contatti .contact-form button:hover {
+  filter: brightness(0.96);
+}
+
+.page-contatti .note {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .navbar a {
+    padding: 0.75rem 0.9rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-photo {
+    width: 135px;
+    height: 135px;
+  }
+}

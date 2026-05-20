@@ -1,378 +1,283 @@
 /* =========================================================
-   CV SITE — STYLE.CSS (Template)
-   Obiettivo: pulito, responsivo, accessibile, facilmente personalizzabile
+   STILE CV - Lisa Cappellari (Template)
+   - Mantiene lo stile originale (colori + layout)
+   - Corregge reset e variabili mancanti
+   - Migliora navbar su mobile
+   - Aggiunge stili per pagina Contatti (card, social, form)
    ========================================================= */
 
-/* =========================
-   1) VARIABILI (PARAMETRI)
-   Cambia qui per “tematizzare” tutto il sito.
-   ========================= */
+/* ================= VARIABILI GLOBALI ================= */
 :root {
-  /* Colori */
-  --color-primary: #2c3e50;     /* Header + footer */
-  --color-accent: #3498db;      /* Navbar + evidenze */
-  --color-bg: #ecf0f1;          /* Sfondo pagina */
-  --color-text: #2d3436;        /* Testo principale */
-  --color-card: #ffffff;        /* Box/Carte */
-  --color-muted: #6b7280;       /* Testo secondario */
-  --color-border: rgba(0, 0, 0, 0.10);
+  /* Colori originali */
+  --colore-primario: #2c3e50;
+  --colore-secondario: #3498db;
+  --colore-sfondo: #ecf0f1;
+  --colore-testo: #2d3436;
 
-  /* Tipografia */
-  --font-main: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-size-base: 16px;
+  /* Variabili mancanti (erano usate ma non definite) */
+  --font-principale: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --larghezza-max: 980px;
 
-  /* Layout */
-  --max-width: 980px;           /* Larghezza massima contenuti */
-  --radius: 12px;               /* Arrotondamento */
-  --shadow: 0 8px 24px rgba(0,0,0,0.08);
-
-  /* Spaziature (scala) */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-
-  /* Accessibilità: focus ben visibile */
-  --focus-ring: 0 0 0 3px rgba(52, 152, 219, 0.35);
+  /* Extra leggeri (non cambiano stile, aiutano uniformità) */
+  --raggio: 10px;
+  --ombra: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --bordo: rgba(0, 0, 0, 0.12);
 }
 
-/* =========================
-   2) RESET BASE
-   ========================= */
+/* ================= RESET BASE (corretto) ================= */
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-html {
-  font-size: var(--font-size-base);
-}
+
+/* ================= STILE GENERALE ================= */
 body {
-  margin: 0;
-  font-family: var(--font-main);
-  background: var(--color-bg);
-  color: var(--color-text);
+  font-family: var(--font-principale);
+  background-color: var(--colore-sfondo);
+  color: var(--colore-testo);
   line-height: 1.6;
 }
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 a {
   color: inherit;
 }
 
-/* =========================
-   3) UTILITIES
-   ========================= */
-.container {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: var(--space-4);
-}
-
-.main {
-  padding-block: var(--space-8);
-}
-
-/* Skip link: appare quando usi TAB */
-.skip-link {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translateY(-120%);
-  background: var(--color-accent);
-  color: white;
-  padding: var(--space-3) var(--space-4);
-  z-index: 999;
-  border-radius: 0 0 var(--radius) 0;
-  text-decoration: none;
-}
-.skip-link:focus {
-  transform: translateY(0);
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-/* Focus visibile per tastiera */
-:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-  border-radius: 8px;
-}
-
-/* =========================
-   4) HEADER
-   ========================= */
+/* ================= HEADER ================= */
 .header {
-  background: var(--color-primary);
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--colore-primario);
   color: white;
-  padding-block: var(--space-8);
 }
-.header--small {
-  padding-block: var(--space-6);
-}
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-6);
-  flex-wrap: wrap; /* evita rotture su schermi piccoli */
-}
-.header__name {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 0.2px;
-}
+
 .job-title {
-  margin: var(--space-2) 0 0;
+  font-size: 1.1rem;
   opacity: 0.9;
+  margin-top: 0.25rem;
 }
 
-/* Foto profilo: cerchio + bordo */
-.profile-photo {
-  width: 160px;             /* dimensione immagine */
-  height: 160px;            /* quadrata per cerchio perfetto */
-  object-fit: cover;        /* evita deformazioni */
-  border-radius: 50%;       /* immagine circolare */
-  border: 3px solid white;  /* stacco su header */
-}
-
-/* =========================
-   5) NAVBAR
-   ========================= */
+/* ================= NAVBAR ================= */
 .navbar {
-  background: var(--color-accent);
+  background-color: var(--colore-secondario);
 }
-.nav-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
 
-  display: flex;
-  justify-content: center;
-  gap: var(--space-2);
-
-  flex-wrap: wrap; /* su mobile va a capo */
-}
-.nav-list a {
-  display: block;
-  padding: var(--space-4) var(--space-4);
-  text-decoration: none;
-  color: white;
-  border-radius: 10px;
-}
-.nav-list a:hover {
-  background: rgba(255,255,255,0.18);
-}
-.nav-list a[aria-current="page"] {
-  background: rgba(255,255,255,0.26);
-  font-weight: 600;
-}
-/* ===== FIX NAVBAR (migliora resa e spaziature) ===== */
+/* migliorata: spaziatura + wrap su mobile */
 .navbar ul {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;            /* spazio tra voci */
-  flex-wrap: wrap;        /* su mobile va a capo */
-  margin: 0;
-  padding: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;          /* fondamentale per mobile */
   list-style: none;
+  gap: 0.4rem;
+  padding: 0.4rem;
 }
 
+/* link coerenti */
 .navbar a {
-  display: block;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  text-decoration: none;
   color: white;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  display: block;
+  border-radius: var(--raggio);
+  transition: background-color 0.2s ease;
 }
 
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* pagina attiva (se in HTML aggiungi aria-current="page") */
 .navbar a[aria-current="page"] {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.28);
   font-weight: 600;
 }
-/* =========================
-   6) SEZIONI / TIPOGRAFIA
-   ========================= */
+
+/* ================= CONTENUTO ================= */
+main {
+  max-width: var(--larghezza-max);
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* ================= FOTO PROFILO (commenti corretti) ================= */
+.profile-photo {
+  width: 150px;        /* dimensione immagine */
+  height: 150px;       /* rende il cerchio perfetto */
+  object-fit: cover;   /* evita deformazioni */
+  border-radius: 50%;  /* immagine circolare */
+  margin: 1rem auto;   /* spazio sopra e sotto */
+  display: block;
+  border: 3px solid white;
+}
+
+/* ================= SEZIONI ================= */
 .section {
   margin-bottom: 3rem;
 }
+
 .section h2 {
-  margin: 0 0 var(--space-4);
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-accent);
+  color: var(--colore-primario);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--colore-secondario);
   display: inline-block;
-  padding-bottom: var(--space-2);
-}
-.subtitle {
-  margin-top: var(--space-8);
-  margin-bottom: var(--space-3);
-  color: var(--color-primary);
+  padding-bottom: 0.2rem;
 }
 
-/* =========================
-   7) CARD / BOX
-   ========================= */
-.card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-6);
-  box-shadow: var(--shadow);
-}
-
-/* =========================
-   8) ESPERIENZA (ITEM)
-   ========================= */
+/* ================= ESPERIENZA ================= */
 .item {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-6);
-  box-shadow: var(--shadow);
-  margin-bottom: var(--space-4);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: var(--raggio);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
 }
+
 .item h3 {
-  margin: 0 0 var(--space-2);
+  margin-bottom: 0.3rem;
 }
+
 .date {
-  margin: 0 0 var(--space-3);
-  font-size: 0.95rem;
-  color: var(--color-muted);
+  font-size: 0.9rem;
+  color: gray;
 }
 
-/* =========================
-   9) COMPETENZE (GRID)
-   ========================= */
+/* ================= COMPETENZE ================= */
 .skills {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+  padding-left: 0;
 }
+
 .skills li {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  padding: var(--space-4);
+  background-color: white;
+  padding: 0.75rem;
   text-align: center;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* Progress bars (facoltative) */
-.meter-list {
-  display: grid;
-  gap: var(--space-4);
+/* =========================================================
+   CONTATTI — STILI SPECIFICI (RISOLVONO LA PAGINA CONTATTI)
+   ========================================================= */
+
+/* card contatti (social/email) */
+.card {
+  background: white;
+  border-radius: var(--raggio);
+  padding: 1.2rem;
+  box-shadow: var(--ombra);
+  border: 1px solid rgba(0,0,0,0.06);
+  margin-top: 1rem;
 }
-.meter__label {
+
+.card p {
+  margin-bottom: 0.7rem;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* link social: visibili, cliccabili, “da CV” */
+.card a {
+  color: var(--colore-secondario);
   font-weight: 600;
-  margin-bottom: var(--space-2);
-}
-.meter__bar {
-  height: 12px;
-  background: rgba(0,0,0,0.10);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.meter__bar > span {
-  display: block;
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 999px;
-}
-
-/* =========================
-   10) BOTTONI / AZIONI
-   ========================= */
-.actions {
-  display: flex;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-  margin-top: var(--space-6);
-}
-.button {
-  display: inline-block;
-  padding: 0.75rem 1rem;
-  background: var(--color-accent);
-  color: white;
   text-decoration: none;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.35);
-}
-.button:hover {
-  filter: brightness(0.95);
-}
-.button--ghost {
-  background: transparent;
-  color: var(--color-primary);
-  border: 1px solid var(--color-border);
+  word-break: break-word; /* evita che URL lunghi sfondino */
 }
 
-/* =========================
-   11) FORM (facoltativo)
-   ========================= */
-.form {
-  display: grid;
-  gap: var(--space-4);
-  max-width: 520px;
+.card a:hover {
+  text-decoration: underline;
 }
+
+/* form contatti (se lo usi) */
+.form {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.9rem;
+  max-width: 600px;
+}
+
 .form label {
   display: grid;
-  gap: var(--space-2);
+  gap: 0.35rem;
   font-weight: 600;
 }
+
 .form input,
 .form textarea {
   font: inherit;
-  padding: 0.75rem;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
+  padding: 0.85rem 1rem;
+  border-radius: var(--raggio);
+  border: 1px solid var(--bordo);
   background: white;
-}
-.note {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 0.95rem;
+  outline: none;
 }
 
-/* =========================
-   12) FOOTER
-   ========================= */
-.footer {
-  background: var(--color-primary);
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--colore-secondario);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+/* bottone invio coerente con il tema */
+.button,
+.form button {
+  background: var(--colore-secondario);
   color: white;
-  text-align: center;
-  padding-block: var(--space-4);
+  border: none;
+  border-radius: var(--raggio);
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  transition: filter 0.2s ease;
+}
+
+.button:hover,
+.form button:hover {
+  filter: brightness(0.95);
+}
+
+.note {
+  color: #6b7280;
   font-size: 0.95rem;
 }
 
-/* =========================
-   13) RESPONSIVE (piccoli schermi)
-   ========================= */
-@media (max-width: 560px) {
-  .header__inner {
-    justify-content: center;
-    text-align: center;
-  }
-  .profile-photo {
-    width: 140px;
-    height: 140px;
-  }
+/* ================= FOOTER ================= */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--colore-primario);
+  color: white;
+  font-size: 0.9rem;
 }
 
-/* =========================
-   14) STAMPA (opzionale)
-   Quando stampi (o salvi in PDF) rende il CV più “pulito”.
-   ========================= */
-@media print {
-  .navbar, .skip-link, .actions { display: none !important; }
-  body { background: white; }
-  .item, .card, .skills li { box-shadow: none; }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 560px) {
+  .navbar a {
+    padding: 0.7rem 0.85rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-photo {
+    width: 135px;
+    height: 135px;
+  }
 }

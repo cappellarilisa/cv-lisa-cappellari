@@ -207,6 +207,24 @@ a { color: inherit; }
   text-align: center;
   box-shadow: var(--shadow-soft);
 }
+/* === FIX COMPETENZE: riquadri + testo sempre visibile === */
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.8rem;
+}
+
+.skills li {
+  background: #ffffff;
+  color: #111827;         /* forza il colore del testo (evita testo invisibile) */
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 
 /* ================= METER / PROGRESS (template iniziale) ================= */
 .meter-list {

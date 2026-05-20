@@ -1,30 +1,28 @@
 /* =========================================================
-   CV SITE - style.css (Aggiornato)
-   - Mantiene lo stile originale (colori e struttura)
-   - Corregge errori del CSS precedente
-   - Aggiunge stile "Contatti" dark con blocchi separati
+   CV SITE - style.css
+   - Stile originale (chiaro) per tutte le pagine
+   - Tema DARK solo per la pagina Contatti (body.page-contatti)
+   - Navbar e bottoni coerenti e funzionanti
    ========================================================= */
 
 /* ================= VARIABILI GLOBALI ================= */
 :root {
-  /* Colori originali */
-  --colore-primario: #2c3e50;
-  --colore-secondario: #3498db;
-  --colore-sfondo: #ecf0f1;
-  --colore-testo: #2d3436;
+  --colore-primario: #2c3e50;     /* header + footer */
+  --colore-secondario: #3498db;   /* navbar + bottoni */
+  --colore-sfondo: #ecf0f1;       /* sfondo pagine */
+  --colore-testo: #2d3436;        /* testo */
 
-  /* Variabili che nel tuo CSS venivano usate ma non erano definite */
   --font-principale: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --larghezza-max: 980px;
 
-  /* Extra leggeri per uniformare senza cambiare stile */
   --raggio: 12px;
-  --bordo-soft: rgba(0, 0, 0, 0.10);
-  --ombra-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  --focus-ring: 0 0 0 3px rgba(52, 152, 219, 0.30);
 }
 
-/* ================= RESET BASE (FIX) ================= */
-/* Nel tuo CSS originale il reset era "- { ... }" e non funziona. */
+/* ================= RESET BASE (corretto) ================= */
 *,
 *::before,
 *::after {
@@ -33,7 +31,7 @@
   box-sizing: border-box;
 }
 
-/* ================= STILE GENERALE ================= */
+/* ================= BASE ================= */
 body {
   font-family: var(--font-principale);
   background-color: var(--colore-sfondo);
@@ -51,6 +49,20 @@ a {
   color: inherit;
 }
 
+/* focus accessibile */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 10px;
+}
+
+/* ================= LAYOUT CONTENUTO ================= */
+main {
+  max-width: var(--larghezza-max);
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
 /* ================= HEADER ================= */
 .header {
   text-align: center;
@@ -65,6 +77,16 @@ a {
   margin-top: 0.25rem;
 }
 
+/* ================= FOTO PROFILO ================= */
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 1rem auto;
+  border: 3px solid white;
+}
+
 /* ================= NAVBAR ================= */
 .navbar {
   background-color: var(--colore-secondario);
@@ -74,50 +96,30 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;   /* su mobile va a capo */
+  gap: 0.4rem;
   list-style: none;
-
-  /* miglioramenti (senza stravolgere): */
-  flex-wrap: wrap;     /* su mobile va a capo bene */
-  gap: 0.4rem;         /* spazio tra voci */
-  padding: 0.4rem;     /* respiro */
+  padding: 0.4rem;
 }
 
 .navbar a {
+  display: block;
   color: white;
   text-decoration: none;
-  padding: 1rem;
-  display: block;
-
-  /* “pill” come nel tuo screenshot */
+  padding: 0.85rem 1rem;
   border-radius: 10px;
+  transition: background-color 0.2s ease, filter 0.2s ease;
 }
 
+/* hover */
 .navbar a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Pagina attiva (facoltativo): aggiungi aria-current="page" nel link attivo */
+/* pagina attiva */
 .navbar a[aria-current="page"] {
   background-color: rgba(255, 255, 255, 0.28);
-  font-weight: 600;
-}
-
-/* ================= CONTENUTO ================= */
-main {
-  max-width: var(--larghezza-max);
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-/* ================= FOTO PROFILO (FIX COMMENTI) ================= */
-.profile-photo {
-  width: 150px;        /* dimensione immagine */
-  height: 150px;       /* cerchio perfetto */
-  object-fit: cover;   /* evita deformazioni */
-  border-radius: 50%;  /* immagine circolare */
-  margin: 1rem auto;   /* spazio sopra e sotto */
-  display: block;
-  border: 3px solid white;
+  font-weight: 700;
 }
 
 /* ================= SEZIONI ================= */
@@ -133,13 +135,21 @@ main {
   padding-bottom: 0.2rem;
 }
 
-/* ================= ESPERIENZA ================= */
-.item {
-  margin-bottom: 1.5rem;
+/* ================= CARD GENERICHE ================= */
+.card {
+  background: white;
+  border-radius: var(--raggio);
+  padding: 1.2rem;
+  box-shadow: var(--shadow-soft);
 }
 
-.item h3 {
-  margin-bottom: 0.3rem;
+/* ================= ESPERIENZA ================= */
+.item {
+  background: white;
+  border-radius: var(--raggio);
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1rem;
 }
 
 .date {
@@ -150,15 +160,43 @@ main {
 /* ================= COMPETENZE ================= */
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 0.8rem;
+  list-style: none;
+  margin-top: 0.5rem;
 }
 
 .skills li {
-  background-color: white;
-  padding: 0.6rem;
+  background: white;
+  padding: 0.75rem;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ================= BOTTONI (FUNZIONANO OVUNQUE) ================= */
+.btn,
+button {
+  background: var(--colore-secondario);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.btn:hover,
+button:hover {
+  filter: brightness(0.96);
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 }
 
 /* ================= FOOTER ================= */
@@ -171,79 +209,78 @@ main {
 }
 
 /* =========================================================
-   CONTATTI - NUOVE COSE (DARK + BLOCCHI SEPARATI)
-   Attivo solo se in contatti.html usi: <body class="page-contatti">
+   CONTATTI - TEMA DARK + BLOCCHI SEPARATI
+   Attivo SOLO se body ha class="page-contatti"
    ========================================================= */
 
-/* Sfondo scuro come nello screenshot */
 .page-contatti {
   background: #2f4353;
   color: #ffffff;
 }
 
-/* Titolo sezione: bianco con underline azzurra */
+.page-contatti main {
+  padding-top: 2.2rem;
+}
+
+/* titolo sezione su dark */
 .page-contatti .section h2 {
   color: #ffffff;
   border-bottom: 3px solid var(--colore-secondario);
-  padding-bottom: 0.25rem;
 }
 
-/* ========== BLOCCO CONTATTI (CARD SOCIAL SEPARATA) ========== */
+/* BLOCCO 1: card contatti/social separata */
 .page-contatti .contact-card {
   background: #ffffff;
   color: #111827;
   border-radius: var(--raggio);
   padding: 1.4rem 1.6rem;
   margin: 1.2rem 0 1.6rem;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
+  box-shadow: var(--shadow);
 }
 
-/* Spaziatura righe dentro la card */
 .page-contatti .contact-card p {
   margin-bottom: 0.65rem;
-  font-weight: 600;
+  font-weight: 700;
 }
+
 .page-contatti .contact-card p:last-child {
   margin-bottom: 0;
 }
 
-/* Link social ben visibili */
 .page-contatti .contact-card a {
   color: var(--colore-secondario);
-  font-weight: 800;
+  font-weight: 900;
   text-decoration: none;
-  word-break: break-word; /* URL lunghi non sfondano */
+  word-break: break-word;
 }
+
 .page-contatti .contact-card a:hover {
   text-decoration: underline;
 }
 
-/* ========== BLOCCO FORM (SEPARATO SOTTO) ========== */
+/* BLOCCO 2: form separato */
 .page-contatti .form-block {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
 }
 
-/* Titolo del form */
 .page-contatti .form-title {
   margin: 0 0 0.8rem;
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 900;
   color: #ffffff;
 }
 
-/* Form base (se nel tuo HTML usi class="contact-form") */
+/* stile form */
 .page-contatti .contact-form {
   max-width: 720px;
 }
 
-/* Label ben leggibili */
 .page-contatti .contact-form label {
   display: block;
   margin: 1rem 0 0.4rem;
-  font-weight: 800;
+  font-weight: 900;
 }
 
-/* Input e textarea stile pulito */
 .page-contatti .contact-form input,
 .page-contatti .contact-form textarea {
   width: 100%;
@@ -256,56 +293,8 @@ main {
   font: inherit;
 }
 
-/* Textarea più alta (come nello screenshot) */
 .page-contatti .contact-form textarea {
   min-height: 170px;
   resize: vertical;
 }
 
-/* Focus (accessibile e bello) */
-.page-contatti .contact-form input:focus,
-.page-contatti .contact-form textarea:focus {
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.28);
-}
-
-/* Bottone “Invia” grande azzurro */
-.page-contatti .contact-form button,
-.page-contatti .contact-form .button {
-  width: 100%;
-  margin-top: 1.2rem;
-  background: var(--colore-secondario);
-  color: #ffffff;
-  border: none;
-  border-radius: var(--raggio);
-  padding: 1rem;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.page-contatti .contact-form button:hover,
-.page-contatti .contact-form .button:hover {
-  filter: brightness(0.96);
-}
-
-/* Nota sotto al bottone */
-.page-contatti .note {
-  margin-top: 0.7rem;
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 560px) {
-  .navbar a {
-    padding: 0.75rem 0.9rem;
-  }
-
-  main {
-    padding: 1.5rem 1rem;
-  }
-
-  .profile-photo {
-    width: 135px;
-    height: 135px;
-  }
-}

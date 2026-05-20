@@ -1,19 +1,30 @@
+/* =========================================================
+   CV SITE - style.css (Aggiornato)
+   - Mantiene lo stile originale (colori e struttura)
+   - Corregge errori del CSS precedente
+   - Aggiunge stile "Contatti" dark con blocchi separati
+   ========================================================= */
+
 /* ================= VARIABILI GLOBALI ================= */
 :root {
+  /* Colori originali */
   --colore-primario: #2c3e50;
   --colore-secondario: #3498db;
   --colore-sfondo: #ecf0f1;
   --colore-testo: #2d3436;
 
-  /* Mancavano ma venivano usate nel tuo CSS */
+  /* Variabili che nel tuo CSS venivano usate ma non erano definite */
   --font-principale: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --larghezza-max: 980px;
 
-  /* Extra (coerenti) */
+  /* Extra leggeri per uniformare senza cambiare stile */
   --raggio: 12px;
+  --bordo-soft: rgba(0, 0, 0, 0.10);
+  --ombra-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* ================= RESET BASE (FIX) ================= */
+/* Nel tuo CSS originale il reset era "- { ... }" e non funziona. */
 *,
 *::before,
 *::after {
@@ -36,10 +47,8 @@ img {
   display: block;
 }
 
-main {
-  max-width: var(--larghezza-max);
-  margin: auto;
-  padding: 2rem 1rem;
+a {
+  color: inherit;
 }
 
 /* ================= HEADER ================= */
@@ -64,10 +73,13 @@ main {
 .navbar ul {
   display: flex;
   justify-content: center;
+  align-items: center;
   list-style: none;
-  flex-wrap: wrap;     /* migliora su mobile */
-  gap: 0.4rem;
-  padding: 0.4rem;
+
+  /* miglioramenti (senza stravolgere): */
+  flex-wrap: wrap;     /* su mobile va a capo bene */
+  gap: 0.4rem;         /* spazio tra voci */
+  padding: 0.4rem;     /* respiro */
 }
 
 .navbar a {
@@ -75,6 +87,8 @@ main {
   text-decoration: none;
   padding: 1rem;
   display: block;
+
+  /* “pill” come nel tuo screenshot */
   border-radius: 10px;
 }
 
@@ -82,10 +96,17 @@ main {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Se vuoi evidenziare la pagina attiva, aggiungi aria-current="page" all’<a> */
+/* Pagina attiva (facoltativo): aggiungi aria-current="page" nel link attivo */
 .navbar a[aria-current="page"] {
   background-color: rgba(255, 255, 255, 0.28);
   font-weight: 600;
+}
+
+/* ================= CONTENUTO ================= */
+main {
+  max-width: var(--larghezza-max);
+  margin: auto;
+  padding: 2rem 1rem;
 }
 
 /* ================= FOTO PROFILO (FIX COMMENTI) ================= */
@@ -109,6 +130,7 @@ main {
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--colore-secondario);
   display: inline-block;
+  padding-bottom: 0.2rem;
 }
 
 /* ================= ESPERIENZA ================= */
@@ -149,62 +171,81 @@ main {
 }
 
 /* =========================================================
-   CONTATTI - STILE “DARK” COME NELLO SCREENSHOT
-   Attivo SOLO se in contatti.html metti: <body class="page-contatti">
+   CONTATTI - NUOVE COSE (DARK + BLOCCHI SEPARATI)
+   Attivo solo se in contatti.html usi: <body class="page-contatti">
    ========================================================= */
 
+/* Sfondo scuro come nello screenshot */
 .page-contatti {
-  background: #2f4353; /* blu/grigio scuro come nello screenshot */
+  background: #2f4353;
   color: #ffffff;
 }
 
-/* Manteniamo header e navbar coerenti (restano già ok), ma main diventa dark */
-.page-contatti main {
-  padding-top: 2.2rem;
-}
-
-/* Titoli in contatti: underline azzurra */
+/* Titolo sezione: bianco con underline azzurra */
 .page-contatti .section h2 {
   color: #ffffff;
   border-bottom: 3px solid var(--colore-secondario);
+  padding-bottom: 0.25rem;
 }
 
-/* Card grande bianca (quella del riquadro nello screenshot) */
-.page-contatti .card {
+/* ========== BLOCCO CONTATTI (CARD SOCIAL SEPARATA) ========== */
+.page-contatti .contact-card {
   background: #ffffff;
   color: #111827;
   border-radius: var(--raggio);
-  padding: 1.6rem;
-  margin: 1.2rem 0 2rem;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.20);
-  min-height: 240px; /* simile al blocco grande che hai nello screenshot */
+  padding: 1.4rem 1.6rem;
+  margin: 1.2rem 0 1.6rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
 }
 
-/* Link social dentro la card */
-.page-contatti .card a {
-  color: var(--colore-secondario);
-  font-weight: 700;
-  text-decoration: none;
-  word-break: break-word;
+/* Spaziatura righe dentro la card */
+.page-contatti .contact-card p {
+  margin-bottom: 0.65rem;
+  font-weight: 600;
 }
-.page-contatti .card a:hover {
+.page-contatti .contact-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Link social ben visibili */
+.page-contatti .contact-card a {
+  color: var(--colore-secondario);
+  font-weight: 800;
+  text-decoration: none;
+  word-break: break-word; /* URL lunghi non sfondano */
+}
+.page-contatti .contact-card a:hover {
   text-decoration: underline;
 }
 
-/* Form stile “pulito” */
-.page-contatti form {
-  max-width: 720px;
+/* ========== BLOCCO FORM (SEPARATO SOTTO) ========== */
+.page-contatti .form-block {
+  margin-top: 0.8rem;
 }
 
-.page-contatti label {
-  display: block;
-  margin: 1rem 0 0.4rem;
-  font-weight: 700;
+/* Titolo del form */
+.page-contatti .form-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: #ffffff;
 }
 
-.page-contatti input,
-.page-contatti textarea {
+/* Form base (se nel tuo HTML usi class="contact-form") */
+.page-contatti .contact-form {
+  max-width: 720px;
+}
+
+/* Label ben leggibili */
+.page-contatti .contact-form label {
+  display: block;
+  margin: 1rem 0 0.4rem;
+  font-weight: 800;
+}
+
+/* Input e textarea stile pulito */
+.page-contatti .contact-form input,
+.page-contatti .contact-form textarea {
   width: 100%;
   padding: 1rem 1rem;
   border-radius: var(--raggio);
@@ -215,33 +256,56 @@ main {
   font: inherit;
 }
 
-.page-contatti textarea {
-  min-height: 180px;
+/* Textarea più alta (come nello screenshot) */
+.page-contatti .contact-form textarea {
+  min-height: 170px;
   resize: vertical;
 }
 
-/* Bottone “Invia” azzurro grande come nello screenshot */
-.page-contatti button,
-.page-contatti .button {
+/* Focus (accessibile e bello) */
+.page-contatti .contact-form input:focus,
+.page-contatti .contact-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.28);
+}
+
+/* Bottone “Invia” grande azzurro */
+.page-contatti .contact-form button,
+.page-contatti .contact-form .button {
   width: 100%;
   margin-top: 1.2rem;
   background: var(--colore-secondario);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: var(--raggio);
   padding: 1rem;
-  font-weight: 800;
+  font-weight: 900;
   cursor: pointer;
 }
 
-.page-contatti button:hover,
-.page-contatti .button:hover {
+.page-contatti .contact-form button:hover,
+.page-contatti .contact-form .button:hover {
   filter: brightness(0.96);
 }
 
-/* Responsive */
+/* Nota sotto al bottone */
+.page-contatti .note {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 560px) {
   .navbar a {
     padding: 0.75rem 0.9rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-photo {
+    width: 135px;
+    height: 135px;
   }
 }

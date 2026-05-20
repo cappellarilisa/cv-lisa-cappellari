@@ -1,5 +1,9 @@
 /* =========================================================
-   CV SITE - style.css (Versione coerente con======== */   CV SITE - style.css (Versione coerente con template iniziale)
+   CV SITE - style.css (Versione coerente con CV SITE - style.css (Versione coerente con template iniziale)
+   - Supporta: container, nav-list, header--small, skip-link, meter-list
+   - Mantiene: colori originali
+   - Contatti: tema dark + blocchi separati (contact-card + form)
+*/
 
 /* ================= VARIABILI GLOBALI ================= */
 :root {
@@ -358,6 +362,3 @@ a { color: inherit; }
     padding: 1.5rem 0;
   }
 }
-   - Supporta: container, nav-list, header--small, skip-link, meter-list
-   - Mantiene: colori originali
-   - Contatti: tema dark + blocchi separati (contact-card + form)

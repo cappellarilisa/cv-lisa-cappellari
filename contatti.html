@@ -65,15 +65,15 @@
       name="contact-form"
       method="POST"
       data-netlify="true"
-      action="grazie.html">
+      action="/grazie/">
 
   <input type="hidden" name="form-name" value="contact-form" />
 
   <label for="nome">Nome</label>
-  <input id="nome" name="nome" type="text" required>
+  <input id="nome" name="nome" type="text" autocomplete="name" required>
 
   <label for="email">Email</label>
-  <input id="email" name="email" type="email" required>
+  <input id="email" name="email" type="email" autocomplete="email" required>
 
   <label for="messaggio">Messaggio</label>
   <textarea id="messaggio" name="messaggio" rows="6" required></textarea>
